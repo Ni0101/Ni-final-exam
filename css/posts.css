@@ -1,0 +1,54 @@
+body {
+    margin: 0;
+    font-size: 1rem;
+}
+
+.title-posts {
+    max-width: 1000px;
+    margin: 50px auto 0;
+    color: #f29bc4;
+    font-size: 90px;
+    border-bottom: 1px solid #f29bc4;
+}
+
+.posts {
+    margin: 0 219px;
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1000px;
+    padding: 30px 0;
+    justify-content: start;
+}
+
+.post {
+    box-sizing: border-box;
+    margin: 10px 1px;
+    background: white;
+    border: 1px solid #f6a7c1;
+    border-bottom-width: 4px;
+    width: 33%;
+    height: 250px;
+    padding: 20px;
+}
+
+.post:first-of-type {
+    width: 66%;
+}
+
+.posts a {
+    color: black;
+    text-decoration: none;
+    text-transform: capitalize;
+    font-size: 20px;
+}
+
+.posts a:hover {
+    color: #f6a7c1;
+}
+
+.posts p {
+    line-height: 1.5;
+    color: #666;
+    font-family: system-ui;
+    font-size: 13px;
+}

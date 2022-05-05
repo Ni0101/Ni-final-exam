@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/posts.css">
+</head>
+<body>
+    <h1 class="title-posts">Posts</h1>
+    <div id='posts' class="posts"></div>
+
+    <script>
+        const searchParams = new URLSearchParams(window.location.search);
+        const userId = searchParams.get('userId');
+        const getUserUrl = `https://jsonplaceholder.typicode.com/users/${userId}`;
+        const getPostByIdUrl = `https://jsonplaceholder.typicode.com/users/${userId}/posts`;
+        
+        async function getPostById() {
+            const response = await fetch(getPostByIdUrl);
+            const posts = await response.json();
+            const postsId = document.getElementById('posts');
+            posts.forEach(function (post) {
+                var div = document.createElement('div');
+                div.innerHTML = `
+                    <a href='postdetail.html?postId=${post.id}'>${post.title}</a>
+                    <p>${post.body}</p>`;
+                div.classList.add('post');
+                postsId.append(div);
+            });
+        };
+
+        getPostById();
+    </script>
+</body>
+</html>

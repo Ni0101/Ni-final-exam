@@ -1,0 +1,37 @@
+body {
+    margin: 0;
+    font-size: 1rem;
+}
+
+.title-contact {
+    max-width: 1000px;
+    margin: 50px auto 0;
+    color: #f29bc4;
+    font-size: 90px;
+    border-bottom: 1px solid #f29bc4;
+}
+
+.info {
+    margin: 50px auto 0;
+    max-width: 1000px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.contact {
+    width: 450px;
+    padding: 20px;
+    /* background-color: #f18fc5;
+    background-image: linear-gradient(to bottom right, #f18fc5, #f2bdd6); */
+    border-bottom: 2px solid #f277bb;
+    border-right: 1px solid #f277bb;
+}
+
+.contact:hover {
+    color: #f29bc4;
+}
+
+.contact h2 {
+    margin: 0;
+    padding: 0;
+}

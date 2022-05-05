@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/contact.css">
+</head>
+
+<body>
+
+    <h2 class="title-contact">Contact</h2>
+    <div id='user' class="info"></div>
+
+    <script>
+        const searchParams = new URLSearchParams(window.location.search);
+        const userId = searchParams.get('userId');
+        const getUserUrl = `https://jsonplaceholder.typicode.com/users/${userId}`;
+
+
+        async function getUser() {
+            const response = await fetch(getUserUrl);
+            const user = await response.json();
+            console.log(user)
+            const userId = document.getElementById('user');
+            var div1 = document.createElement('div');
+            div1.innerHTML = `
+                <div>
+	                <h2>Name: ${user.name}</h2>
+                    <p>Username: ${user.username}</p>
+                    <p>Email: ${user.email}</p>
+                    <p>Address: </p>
+                    <ul>
+                        <li>Street: ${user.address.street}</li>
+                        <li>Suite: ${user.address.suite}</li>
+                        <li>City: ${user.address.city}</li>
+                        <li>Zipcode: ${user.address.zipcode}</li>
+                    </ul>
+                    <p>Geo: </p>
+                    <ul>
+                        <li>Lat: ${user.address.geo.lat}</li>
+                        <li>Lng: ${user.address.geo.lng}</li>
+                    </ul>
+                </div>`;
+            div1.classList.add('contact');
+            var div2 = document.createElement('div');
+            div2.innerHTML = `
+                <div>
+	                <h2>Phone: ${user.phone}</h2>
+                    <p>Webside: ${user.website}</p>
+                    <p>Company: </p>
+                    <ul>
+                        <li>${user.company.name}</li>
+                        <li>${user.company.catchPhrase}</li>
+                        <li>${user.company.bs}</li>
+                    </ul>
+                </div>`;
+            div2.classList.add('contact');
+            userId.append(div1);
+            userId.append(div2);
+        }
+
+        getUser();
+    </script>
+</body>
+
+</html>

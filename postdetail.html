@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/comments.css">
+</head>
+
+<body>
+    <h1 class="title-post-comments">Post - Comments</h1>
+    <div class="post-comments">
+        <div id="post"></div>
+        <div id="comments" class="comments"></div>
+    </div>
+
+    <script>
+
+        const searchParams = new URLSearchParams(window.location.search);
+        const postId = searchParams.get('postId');
+
+        const getPostByIdUrl = `https://jsonplaceholder.typicode.com/posts/${postId}`;
+        const getCommentsUrl = `https://jsonplaceholder.typicode.com/posts/${postId}/comments`;
+
+        async function getPostById() {
+            const response = await fetch(getPostByIdUrl);
+            const post = await response.json();
+            const postId = document.getElementById('post');
+            var div = document.createElement('div');
+            div.innerHTML = `
+                <h2>${post.title}</h2>
+                <p>${post.body}</p>`;
+
+            div.classList.add('post');
+            postId.append(div);
+        }
+
+
+        async function getComments() {
+            const response = await fetch(getCommentsUrl);
+            const comments = await response.json();
+            const commentsId = document.getElementById('comments');
+            comments.forEach(function (comment) {
+                var div = document.createElement('div');
+                div.innerHTML = `
+	                <h2>${comment.name}</h2>
+                    <p>${comment.email}</p>
+                    <p>${comment.body}</p>`;
+
+                div.classList.add('comment');
+                commentsId.append(div);
+            });
+        }
+
+        getPostById();
+        getComments();
+
+    </script>
+</body>
+
+</html>

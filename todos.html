@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/todos.css">
+</head>
+<body>
+    <h1 class="title-todos">Todos</h1>
+    <div id="todos" class="todos"></div>
+
+    <script>
+        const searchParams = new URLSearchParams(window.location.search);
+        const userId = searchParams.get('userId');
+        const getTodoByIdUrl = `https://jsonplaceholder.typicode.com/users/${userId}/todos`;
+
+        async function getTodoById() {
+            const response = await fetch(getTodoByIdUrl);
+            const todos = await response.json();
+            const todosId = document.getElementById('todos');
+            todos.forEach(function (todo) {
+                var div = document.createElement('div');
+                div.innerHTML = `
+	                <h2>${todo.title}</h2>
+                    <p>${todo.completed}</p>`;
+
+                div.classList.add('todo');
+                todosId.append(div);
+            });
+        }
+
+        getTodoById();
+    </script>
+</body>
+</html>

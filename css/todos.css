@@ -1,0 +1,51 @@
+body {
+    margin: 0;
+    font-size: 1rem;
+}
+
+.title-todos {
+    max-width: 1000px;
+    margin: 50px auto 0;
+    color: #f29bc4;
+    font-size: 90px;
+    border-bottom: 1px solid #f29bc4;
+}
+
+.todos {
+    margin: 0 219px;
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1000px;
+    padding: 30px 0;
+    justify-content: start;
+}
+
+.todo {
+    box-sizing: border-box;
+    margin: 10px 1px;
+    background: white;
+    border: 1px solid #f6a7c1;
+    border-bottom-width: 4px;
+    width: 33%;
+    height: 200px;
+    padding: 20px;
+}
+
+.todo h2 {
+    margin: 0;
+    text-transform: capitalize;
+    font-size: 1.2rem;
+    font-family: system-ui;
+    line-height: 1.5;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.todo p {
+    text-transform: capitalize;
+}
+
+.todo:hover{
+    color: #f6a7c1;
+}
+

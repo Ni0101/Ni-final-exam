@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/photos.css">
+</head>
+<body>
+    <h1 class="title-photos">Photos</h1>
+    <div id='photos' class="photos"></div>
+    <script>
+        const searchParams = new URLSearchParams(window.location.search);
+        const albumId = searchParams.get('albumId');
+        const getAlbumUrl = `https://jsonplaceholder.typicode.com/albums/${albumId}`;
+        const getPhotoUrl = `https://jsonplaceholder.typicode.com/albums/${albumId}/photos`;
+
+        async function getPhoto() {
+            const response = await fetch(getPhotoUrl);
+            const photos = await response.json();
+            const demo = document.getElementById('photos');
+            photos.forEach(function (photo) {
+                var div = document.createElement('div');
+                div.innerHTML = `
+                <div>
+	                <h2>${photo.title}</h2>
+                    <a href="${photo.url}">${photo.url}</a>
+                    <img src='${photo.thumbnailUrl}' alt='Ni'>
+                </div>`;
+                div.classList.add('photo');
+                demo.append(div);
+            });
+        }
+
+        getPhoto();
+    </script>
+</body>
+</html>
